@@ -434,5 +434,22 @@ public with sharing class CSUtils {
 
         return queryString;
     }
+	
+	public static DateTime getSFDCDateTime(Integer unixTime){
+	if (unixTime == null) {
+    		return null;
+    	}
+
+		DateTime dateInstance = datetime.newInstanceGmt(1970, 1, 1, 0, 0, 0);
+		return dateInstance.addSeconds(unixTime);
+	}
+
+	public static Integer getUnixTimeStamp(DateTime dateInstance){
+		if (dateInstance == null) {
+    		return null;
+    	}
+
+		return Integer.valueOf(dateInstance.getTime()/1000);
+	}
 
 }
